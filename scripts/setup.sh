@@ -3,13 +3,7 @@
 # TODO List
 # TODO2 - create if statements to catch situations where there is no internet
 # echo -e "> \e[32m _\e[32m"
-echo -e "> \e[32m  This script will do the following:_\e[32m"
-echo -e "> \e[32m  1. Fix the wifi adapter_\e[32m"
-echo -e "> \e[32m  2. Save a login credential to a wifi router _\e[32m"
-echo -e "> \e[32m  3. Update and upgrade the software_\e[32m"
-echo -e "> \e[32m  4. Install TLDR and Vim_\e[32m"
-read -p "> Do you want to continue? (y/N)" prompt;
-if [ "$prompt" == "y" || "$prompt" == "Y" ]; then
+
     # gather necessary information for wifi connection
     echo -e "> \e[32m What is the Wifi Network name? (SSID)_\e[32m"
     read ssid
@@ -18,7 +12,7 @@ if [ "$prompt" == "y" || "$prompt" == "Y" ]; then
     sudo sh -c "wpa_passphrase $ssid $password >> /etc/wpa_supplicant/wpa_supplicant.conf"
 
     # makes changes to /etc/network/interfaces to allow the wifi to work
-    echo -e "> \e[31m Appending necessary changes to /etc/network/interfaces\e[0m"
+    echo -e "> \e[31m Appending wifi details to /etc/network/interfaces\e[0m"
     echo -e "# interfaces(5) file used by ifup(8) and ifdown(8)\n# include files from /etc/network/interfaces.d:\nsource /etc/network/interfaces.d/*" > /etc/network/interfaces
     echo -e "auto wlan0\nallow-hotplug wlan0\niface wlan0 inet manual\nwpa-conf /etc/wpa_supplicant/wpa_supplicant.conf" >> /etc/network/interfaces
 
@@ -51,8 +45,3 @@ if [ "$prompt" == "y" || "$prompt" == "Y" ]; then
     echo -e "> \e[31m Vim Installed_\e[0m"
     sleep 1
     echo -e "> \e[31m Setup complete_\e[0m"
-
-else
-    echo -e "> \e[32m No changes made. Wifi may not work until changes are made_\e[32m"
-    exit 0
-fi
