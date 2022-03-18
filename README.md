@@ -1,6 +1,6 @@
-# raspberrypi-course
+# There are 2 folders in this repo
+- course_content
+    Divided according to weeks
+- scripts
+    Please run the scripts as the root user
 
-Under construction!
-
-We will be hosting a raspberry pi course in the coming weeks
-Keep an eye here for updates
