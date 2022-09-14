@@ -12,7 +12,7 @@ pwd_length=""
     # sudo su ./path/to/this/script.sh
     
 echo -e "\e[31m>  \e[32mIs an apt upgrade necessary? (\e[36my\e[32m)es/(\e[36mn\e[32m)o\e[31m_\e[0m"
-echo -e "\e[31m>  \e[32mThis may add 10 mins on to a 5 min setup. It is reccomended for a first time setup\e[31m_\e[0m"
+echo -e "\e[31m>  \e[32mIt is reccomended for a first time setup\e[31m_\e[0m"
 read upgrade_decision
 if [ $upgrade_decision = y ] ; then
     upgrade="TRUE"
@@ -104,7 +104,7 @@ echo ""
 echo ""
 echo -e "\e[31m>  \e[32mIt is reccommended to run the following commands after running a full setup\e[31m_\e[0m"
 echo ""
-echo -e "\e[31m>  \e[0mtldr --update \e[32m<--This take a few seconds to update TLDR pages\e[31m_\e[0m"
+echo -e "\e[31m>  \e[0mtldr --update \e[32m<--This take a 1 minute to update TLDR pages\e[31m_\e[0m"
 echo -e "\e[31m>  \e[0mreboot \e[32m<--This takes 2 minutes to get back to login screen\e[31m_\e[0m"
 echo ""
 duration=$SECONDS
