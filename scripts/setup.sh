@@ -10,7 +10,7 @@ pwd_length=""
     # Make sure to run it as root
     # sudo su ./path/to/this/script.sh
     
-echo -e "\e[31m>  \e[32mIs an apt upgrade necessary? (y)es/(n)o\e[31m_\e[0m"
+echo -e "\e[31m>  \e[32mIs an apt upgrade necessary? (\e[36my\e[32m)es/(\e[36mn\e[32m)o\e[31m_\e[0m"
 echo -e "\e[31m>  \e[32mThis may add 10 mins on to a 5 min setup. It is reccomended for a first time setup\e[31m_\e[0m"
 read upgrade_decision
 if [ $upgrade_decision = y ] ; then
@@ -21,7 +21,7 @@ else
 fi
     
     # gather necessary information for wifi connection
-echo -e "\e[31m>  \e[32mDo you need to add a wifi connection? (y)es/(n)o \e[31m_\e[0m"
+echo -e "\e[31m>  \e[32mDo you need to add a wifi connection? (\e[36my\e[32m)es/(\e[36mn\e[32m)o\e[31m_\e[0m"
 read wifi_add
 if [ $wifi_add = y ]; then
     pwd_length=${#password}
@@ -79,10 +79,8 @@ sleep 2
 echo -e "\e[31m>  \e[32mInstalling TLDR\e[31m_\e[0m"
 sudo apt install tldr -y
 echo -e "\e[31m>  \e[32mTLDR installed\e[31m_\e[0m"
-sleep 2
-echo -e "\e[31m>  \e[32mUpdating TLDR\e[31m_\e[0m"
-mkdir -p /home/$USER/.local/share
-tldr --update
+mkdir -p /home/$SUDO_USER/.local/share
+chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/local/
 sleep 2
 echo -e "\e[31m>  \e[32mInstalling Vim\e[31m_\e[0m"
 sudo apt install vim -y
@@ -101,4 +99,11 @@ echo -e "\e[31m>  \e[32mHere are some resources of what can be done next\e[31m_\
 echo -e "\e[31m>  \e[32m444B Raspberry Pi Course: \e[0mhttps://github.com/444B/raspberrypi-course\e[0m \e[31m_\e[0m"
 echo -e "\e[31m>  \e[32mCrash Course Computer Science: \e[0mhttps://www.youtube.com/watch?v=tpIctyqH29Q&list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo\e[0m \e[31m_\e[0m"
 echo -e "\e[31m>  \e[32mThe Linux Command Line PDF: \e[0mhttps://sourceforge.net/projects/linuxcommand/files/TLCL/19.01/TLCL-19.01.pdf/download\e[0m \e[31m_\e[0m"
+echo ""
+echo ""
+echo -e "\e[31m>  \e[32mIt is reccommended to run the following commands after running a full setup\e[31m_\e[0m"
+echo ""
+echo "\e[31m>  \e[0mtldr --update \e[32m<--This take a few seconds to update TLDR pages\e[31m_\e[0m"
+echo "\e[31m>  \e[0mreboot \e[32m<--This takes 2 minutes to get back to login screen\e[31m_\e[0m"
+
 
