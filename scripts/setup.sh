@@ -1,6 +1,7 @@
 #!/bin/bash
 
     # Variables
+SECONDS=0
 upgrade="FALSE"
 wifi_reset="FALSE"
 pwd_length=""
@@ -80,7 +81,7 @@ echo -e "\e[31m>  \e[32mInstalling TLDR\e[31m_\e[0m"
 sudo apt install tldr -y
 echo -e "\e[31m>  \e[32mTLDR installed\e[31m_\e[0m"
 mkdir -p /home/$SUDO_USER/.local/share
-chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/local/
+chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.local/
 sleep 2
 echo -e "\e[31m>  \e[32mInstalling Vim\e[31m_\e[0m"
 sudo apt install vim -y
@@ -103,7 +104,10 @@ echo ""
 echo ""
 echo -e "\e[31m>  \e[32mIt is reccommended to run the following commands after running a full setup\e[31m_\e[0m"
 echo ""
-echo "\e[31m>  \e[0mtldr --update \e[32m<--This take a few seconds to update TLDR pages\e[31m_\e[0m"
-echo "\e[31m>  \e[0mreboot \e[32m<--This takes 2 minutes to get back to login screen\e[31m_\e[0m"
+echo -e "\e[31m>  \e[0mtldr --update \e[32m<--This take a few seconds to update TLDR pages\e[31m_\e[0m"
+echo -e "\e[31m>  \e[0mreboot \e[32m<--This takes 2 minutes to get back to login screen\e[31m_\e[0m"
+echo ""
+duration=$SECONDS
+echo "It took $(($duration / 60)) minutes and $(($duration % 60)) seconds for setup.sh to complete."
 
 
