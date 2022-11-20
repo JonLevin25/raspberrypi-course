@@ -38,7 +38,8 @@ if [ $wifi_add = y ]; then
             echo -e "\e[31m>  \e[32mIncorrect password length. Please try again\e[31m_\e[0m"
         fi
     done
-    sudo sh -c "wpa_passphrase $ssid $password >> /etc/wpa_supplicant/wpa_supplicant.conf"
+    # add password hash, but filter actual password
+    sudo sh -c "wpa_passphrase $ssid $password | grep -v '^\s*#psk' >> /etc/wpa_supplicant/wpa_supplicant.conf"
     echo -e "\e[31m>  \e[32mWPA done\e[31m_\e[0m"
 else
     echo -e "\e[31m>  \e[32mNo wifi added, WPA supplicant unchanged and no network restarts planned\e[31m_\e[0m"
